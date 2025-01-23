@@ -35,6 +35,13 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+      name: Docker build then push
+        uses: tegarimansyah/docker_build_push@master
+        with:
+        env:
+            DOCKER_USER: ${{ secrets.DOCKER_USER }}
+            PASSWORD: ${{ secrets.PASSWORD }}
+
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
